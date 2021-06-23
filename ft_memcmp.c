@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/23 14:35:24 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/23 15:11:29 by jonghpar         ###   ########seoul.kr  */
+/*   Created: 2021/06/23 15:39:37 by jonghpar          #+#    #+#             */
+/*   Updated: 2021/06/23 15:44:42 by jonghpar         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void    *ft_memmove(void *dest, const void *src, size_t n)
+int     ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-    unsigned char   *dest_ptr;
-    unsigned char   *src_ptr;
+    size_t          i;
+    unsigned char   *p1;
+    unsigned char   *p2;
 
-    dest_ptr = (unsigned char *)dest;
-    src_ptr = (unsigned char *)src;
-    if (dest <= src)
+    i = 0;
+    p1 = (unsigned char *)s1;
+    p2 = (unsigned char *)s2;
+    while (i < n)
     {
-        while(n--)
-            *dest_ptr++ = *src_ptr++;
-        return (dest);
+        if (p1[i] != p2[i])
+            return (p1[i] - p2[i]);
+        i++;
     }
-    while (n)
-    {
-        n--;
-        dest_ptr[n] = src_ptr[n];
-    }
-    return (dest);
+    return (0);
 }

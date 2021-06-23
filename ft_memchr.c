@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/23 14:35:24 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/23 15:11:29 by jonghpar         ###   ########seoul.kr  */
+/*   Created: 2021/06/23 15:37:00 by jonghpar          #+#    #+#             */
+/*   Updated: 2021/06/23 15:39:28 by jonghpar         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void    *ft_memmove(void *dest, const void *src, size_t n)
+void    *memchr(const void *s, int c, size_t n)
 {
-    unsigned char   *dest_ptr;
-    unsigned char   *src_ptr;
+    size_t          i;
+    unsigned char   *p;
 
-    dest_ptr = (unsigned char *)dest;
-    src_ptr = (unsigned char *)src;
-    if (dest <= src)
+    i = 0;
+    p = (unsigned char *)s;
+    while (i < n)
     {
-        while(n--)
-            *dest_ptr++ = *src_ptr++;
-        return (dest);
+        if (p[i] == (unsigned char)c)
+            return (p + i);
+        i++;
     }
-    while (n)
-    {
-        n--;
-        dest_ptr[n] = src_ptr[n];
-    }
-    return (dest);
+    return (NULL);
 }
