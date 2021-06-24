@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/23 16:07:51 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/24 12:13:53 by jonghpar         ###   ########seoul.kr  */
+/*   Created: 2021/06/24 12:50:01 by jonghpar          #+#    #+#             */
+/*   Updated: 2021/06/24 12:50:43 by jonghpar         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strnstr(const char *haystack, const char *needle, size_t len)
+int     ft_isalnum(int c)
 {
-    size_t n_len;
-
-    if (*needle == '\0')
-        return ((char *)haystack);
-    n_len = ft_strlen(needle);
-    while (*haystack && len >= n_len)
-    {
-        if (*haystack == *needle && !ft_strncmp(haystack, needle, n_len))
-            return ((char *)haystack);
-        haystack++;
-        len--;
-    }
-    return (NULL);
+    return (ft_isalpha(c) || ft_isdigit(c));
 }
