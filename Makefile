@@ -6,7 +6,7 @@
 #    By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/24 12:57:20 by jonghpar          #+#    #+#              #
-#    Updated: 2021/06/24 12:58:59 by jonghpar         ###   ########seoul.kr   #
+#    Updated: 2021/06/24 13:18:03 by jonghpar         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,5 +68,9 @@ fclean	:	clean
 		rm -f $(NAME)
 
 re	:	fclean all
+
+so:
+	$(CC) -fPIC $(CFLAGS) $(SRCS)
+	gcc -shared -o libft.so $(OBJS)
 
 .PHONY	:	all clean fclean re
