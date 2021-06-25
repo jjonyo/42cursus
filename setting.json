@@ -1,0 +1,5 @@
+"editor.tabSize": 4,
+"editor.renderWhitespace": "all",
+"files.trimTrailingWhitespace": true,
+"files.insertFinalNewline": true,
+"editor.insertSpaces": false
