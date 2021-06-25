@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: jonghpar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/24 12:57:20 by jonghpar          #+#    #+#              #
-#    Updated: 2021/06/24 13:18:03 by jonghpar         ###   ########seoul.kr   #
+#    Updated: 2021/06/25 15:11:49 by jonghpar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,11 @@ SRCS					= ft_atoi.c \
 					  ft_strnstr.c \
 					  ft_strrchr.c \
 					  ft_tolower.c \
-					  ft_toupper.c
+					  ft_toupper.c \
+					  ft_substr.c \
+					  ft_strjoin.c \
+					  ft_strlcpy.c \
+					  ft_strdup.c
 
 BNS_SRCS				= ft_lstsize.c \
 					  ft_lstadd_back.c \

@@ -6,13 +6,13 @@
 /*   By: jonghpar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:37:00 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/25 14:36:15 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/25 15:02:52 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t			i;
 	unsigned char	*p;

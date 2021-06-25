@@ -6,13 +6,13 @@
 /*   By: jonghpar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 13:24:37 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/25 14:40:52 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/25 15:09:23 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	size_t	len;
 	char	*ret;
