@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/25 00:30:05 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/26 13:01:43 by jonghpar         ###   ########seoul.kr  */
+/*   Created: 2021/06/26 13:01:59 by jonghpar          #+#    #+#             */
+/*   Updated: 2021/06/26 13:47:23 by jonghpar         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_itoa(int n)
 {
-	size_t i;
-	size_t j;
+	int			sign;
+	long long	num;
+	int			len;
+	char		*ret;
 
-	if (!s1 || !set)
+	sign = n <= 0 ? 1 : 0;
+	num = n < 0 ? (long long)n * -1 : n;
+	len = 0;
+	while (num)
+	{
+		num /= 10;
+		len++;
+	}
+	if (!(ret = (char *)malloc(len + 1 + sign)))
 		return (NULL);
-	i = 0;
-	j = ft_strlen(s1) - 1;
-	while (i <= j && ft_strrchr(set, s1[i]))
-		i++;
-	while (j >= 0 && ft_strrchr(set, s1[j]))
-		j--;
-	return (ft_substr(s1, i, j - i + 1));
+	num = n < 0 ? (long long)n * -1 : n;
+	len = len + sign;
+	ret[len--] = '\0';
+	while (len >= 0)
+	{
+		ret[len--] = num % 10 + '0';
+		num /= 10;
+	}
+	ret[0] = n < 0 ? '-' : ret[0];
+	return (ret);
 }

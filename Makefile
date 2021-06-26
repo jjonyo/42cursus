@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonghpar <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/24 12:57:20 by jonghpar          #+#    #+#              #
-#    Updated: 2021/06/25 15:11:49 by jonghpar         ###   ########.fr        #
+#    Updated: 2021/06/26 13:48:19 by jonghpar         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,6 @@ re	:	fclean all
 
 so:
 	$(CC) -fPIC $(CFLAGS) $(SRCS)
-	gcc -shared -o libft.so $(OBJS)
+	gcc -shared -o libft.so $(OBJS):
 
 .PHONY	:	all clean fclean re
