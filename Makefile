@@ -6,7 +6,7 @@
 #    By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/24 12:57:20 by jonghpar          #+#    #+#              #
-#    Updated: 2021/06/26 13:48:19 by jonghpar         ###   ########seoul.kr   #
+#    Updated: 2021/06/26 14:03:39 by jonghpar         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ SRCS					= ft_atoi.c \
 					  ft_substr.c \
 					  ft_strjoin.c \
 					  ft_strlcpy.c \
-					  ft_strdup.c
+					  ft_strdup.c \
+					  ft_itoa.c \
+					  ft_putstr_fd.c 
 
 BNS_SRCS				= ft_lstsize.c \
 					  ft_lstadd_back.c \
