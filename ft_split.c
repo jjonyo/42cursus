@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 14:05:45 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/26 15:17:28 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/28 02:47:49 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static size_t	count_word(char const *s, char c)
 {
 	size_t count;
-	size_t i;
 
 	count = 0;
 	while (*s)
@@ -36,8 +35,11 @@ static void		free_memory(char **ret, int i)
 {
 	while (i >= 0)
 	{
-		free(ret[i]);
-		ret[i] = NULL;
+		if (ret[i])
+		{
+			free(ret[i]);
+			ret[i] = NULL;
+		}
 		i--;
 	}
 	free(ret);

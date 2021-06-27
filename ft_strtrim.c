@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 00:30:05 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/26 13:01:43 by jonghpar         ###   ########seoul.kr  */
+/*   Updated: 2021/06/28 02:48:23 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t i;
-	size_t j;
+	int		i;
+	int		j;
 
 	if (!s1 || !set)
 		return (NULL);
