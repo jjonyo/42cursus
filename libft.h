@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:17:56 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/24 12:10:48 by jonghpar         ###   ########seoul.kr  */
+/*   Updated: 2021/06/28 16:26:24 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstlast(t_list *lst);
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-					void (*del)(void *));
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list				*ft_lstnew(void *content);
 #endif
