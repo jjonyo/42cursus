@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 14:05:45 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/28 02:47:49 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/28 17:06:02 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,4 @@ char			**ft_split(char const *s, char c)
 	}
 	ret[i] = NULL;
 	return (ret);
-}
-
-#include <stdio.h>
-
-int main()
-{
-	char **ret = ft_split("hello,world,bye,world,good",',');
-	for (int i=0;i<5;i++)
-	{
-		printf("[%d]%s",i,ret[i]);
-	}
 }

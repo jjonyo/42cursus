@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 00:13:49 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/28 00:17:06 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/28 18:09:02 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void ft_lstdelone(t_list *lst, void (*del)(void*))
 		return ;
 	del(lst->content);
 	free(lst);
-	// lst = NULL;
+	lst = NULL;
 }
