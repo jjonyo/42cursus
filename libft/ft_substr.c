@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 10:15:43 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/30 10:16:03 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/30 22:37:02 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	char	*ret;
 
-	if (!s || !(ret = (char *)malloc(len + 1)))
+	if (!s)
+		return (NULL);
+	ret = (char *)malloc(len + 1);
+	if (!ret)
 		return (NULL);
 	n = ft_strlen(s);
 	i = 0;

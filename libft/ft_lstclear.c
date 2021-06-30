@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 00:17:17 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/30 10:17:45 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/30 22:17:10 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list *list;
-	t_list *tmp;
+	t_list	*list;
+	t_list	*tmp;
 
 	if (!lst || !del)
 		return ;

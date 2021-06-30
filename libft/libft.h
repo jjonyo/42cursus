@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:17:56 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/30 10:19:37 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/30 22:20:15 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void				*content;
 	struct s_list		*next;
