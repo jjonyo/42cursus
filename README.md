@@ -1,1 +1,1 @@
-# Libft
+# 42cursus
