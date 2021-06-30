@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 14:05:45 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/01 00:21:06 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/01 00:25:36 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,4 @@ char	**ft_split(char const *s, char c)
 	}
 	ret[i] = NULL;
 	return (ret);
-}
-
-#include <stdio.h>
-int main()
-{
-	char **ret = ft_split(NULL,0);
 }
