@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 14:05:45 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/28 17:06:02 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/30 10:13:23 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	count_word(char const *s, char c)
 		if (*s != c)
 		{
 			count++;
-			while(*s && *s != c)
+			while (*s && *s != c)
 				s++;
 		}
 		else
@@ -60,7 +60,7 @@ char			**ft_split(char const *s, char c)
 		if (*s != c)
 		{
 			tmp = (char *)s;
-			while(*s && *s != c)
+			while (*s && *s != c)
 				s++;
 			if (!(ret[i++] = ft_substr(tmp, 0, s - tmp)))
 			{

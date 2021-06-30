@@ -6,13 +6,13 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 00:24:45 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/06/28 00:30:07 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/06/30 10:12:36 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (!f)
 		return ;
