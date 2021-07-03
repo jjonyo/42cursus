@@ -6,14 +6,14 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:46:09 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/03 13:52:23 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/03 14:03:03 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-void	save_buf(int fd, char **mem, char *buf)
+int	save_buf(int fd, char **mem, char *buf)
 {
 	// mem[fd]에 buf를 저장해야 한다.
 	// 만약에 mem[fd]에 이미 문자열이 있다면, 이어붙임
@@ -26,13 +26,14 @@ void	save_buf(int fd, char **mem, char *buf)
 		mem[fd] = ft_strjoin(mem[fd], buf);
 		free(tmp);
 		tmp = NULL;
-		printf("%s\n",mem[fd]);
 	}
 	else
 	{
 		mem[fd] = ft_strdup(buf);
-		printf("%s\n",mem[fd]);
 	}
+	if (!mem[fd])
+		return (0);
+	return (1);
 }
 
 int	get_next_line(int fd, char **line)
