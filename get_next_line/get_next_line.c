@@ -6,18 +6,14 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:46:09 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/05 00:45:32 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/05 01:52:20 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*save_buf(char **mem, char *buf)
 {
-	// mem[fd]에 buf를 저장해야 한다.
-	// 만약에 mem[fd]에 이미 문자열이 있다면, 이어붙임
-	// 문자열이 없다면 buf를 복사하여 넣기
 	char	*tmp;
 
 	if (*mem)
@@ -36,21 +32,41 @@ char	*save_buf(char **mem, char *buf)
 
 int	is_new_line(char **mem)
 {
+	int		i;
 	char	*str;
 
 	str = *mem;
-	while (*str)
+	i = 0;
+	while (1)
 	{
-		if (*str == '\n')
-			return (1);
-		str++;
+		if (str[i] == '\n' || str[i] == '\0')
+			return (i);
+		i++;
 	}
-	return (0);
+	return (-1);
 }
 
-int get_line(char **mem, char **line)
+int	get_line(char **mem, char **line)
 {
+	char	*str;
+	char	*tmp;
+	int		offset;
 
+	str = *mem;
+	offset = is_new_line(mem);
+	if (offset < 0)
+		return (END);
+	*line = (char *)malloc(offset + 1);
+	if (!line || !ft_strlcpy(*line, str, offset + 1))
+	{
+		free(*line);
+		return (ERROR);
+	}
+	(*line)[offset] = '\n';
+	tmp = *mem;
+	*mem = ft_strdup(*mem + offset + 1);
+	free(tmp);
+	return (SUCCESS);
 }
 
 int	get_next_line(int fd, char **line)
@@ -65,16 +81,17 @@ int	get_next_line(int fd, char **line)
 	{
 		offset = read(fd, buf, BUFFER_SIZE);
 		if (offset <= 0)
-			break;
+			break ;
 		buf[offset] = '\0';
 		if (!save_buf(&mem[fd], buf))
 			return (ERROR);
-		if (is_new_line(&mem[fd]))
+		if (is_new_line(&mem[fd]) != -1)
 			return (get_line(&mem[fd], line));
 	}
 	return (get_line(&mem[fd], line));
 }
 
+#include <stdio.h>
 #include <fcntl.h>
 
 int main()
@@ -83,7 +100,7 @@ int main()
 	int ret;
 	char *line;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("test_file1", O_RDONLY);
 	if (fd < 0)
 		return (1);
 	ret = get_next_line(fd, &line);
