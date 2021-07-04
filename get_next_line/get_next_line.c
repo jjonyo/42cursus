@@ -6,34 +6,51 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:46:09 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/03 14:03:03 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/05 00:45:32 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-int	save_buf(int fd, char **mem, char *buf)
+char	*save_buf(char **mem, char *buf)
 {
 	// mem[fd]에 buf를 저장해야 한다.
 	// 만약에 mem[fd]에 이미 문자열이 있다면, 이어붙임
 	// 문자열이 없다면 buf를 복사하여 넣기
 	char	*tmp;
 
-	if (mem[fd])
+	if (*mem)
 	{
-		tmp = mem[fd];
-		mem[fd] = ft_strjoin(mem[fd], buf);
+		tmp = *mem;
+		*mem = ft_strjoin(*mem, buf);
 		free(tmp);
 		tmp = NULL;
 	}
 	else
 	{
-		mem[fd] = ft_strdup(buf);
+		*mem = ft_strdup(buf);
 	}
-	if (!mem[fd])
-		return (0);
-	return (1);
+	return (*mem);
+}
+
+int	is_new_line(char **mem)
+{
+	char	*str;
+
+	str = *mem;
+	while (*str)
+	{
+		if (*str == '\n')
+			return (1);
+		str++;
+	}
+	return (0);
+}
+
+int get_line(char **mem, char **line)
+{
+
 }
 
 int	get_next_line(int fd, char **line)
@@ -50,10 +67,12 @@ int	get_next_line(int fd, char **line)
 		if (offset <= 0)
 			break;
 		buf[offset] = '\0';
-		save_buf(fd, mem, buf);
-		//mem에 buf문자열 저장
-		//new line 검사
+		if (!save_buf(&mem[fd], buf))
+			return (ERROR);
+		if (is_new_line(&mem[fd]))
+			return (get_line(&mem[fd], line));
 	}
+	return (get_line(&mem[fd], line));
 }
 
 #include <fcntl.h>
