@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:47:35 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/05 01:52:36 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/05 12:35:58 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define SUCCESS 1
 # define END 0
 # define ERROR -1
+# define TRUE 1
+# define FALSE 0
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1

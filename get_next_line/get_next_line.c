@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:46:09 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/05 01:52:20 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/05 12:44:59 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ char	*save_buf(char **mem, char *buf)
 		tmp = NULL;
 	}
 	else
-	{
 		*mem = ft_strdup(buf);
-	}
 	return (*mem);
 }
 
@@ -37,24 +35,27 @@ int	is_new_line(char **mem)
 
 	str = *mem;
 	i = 0;
-	while (1)
+	while (str[i])
 	{
-		if (str[i] == '\n' || str[i] == '\0')
+		if (str[i] == '\n')
 			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-int	get_line(char **mem, char **line)
+int	get_line(char **mem, char **line, int eof)
 {
 	char	*str;
 	char	*tmp;
 	int		offset;
 
 	str = *mem;
-	offset = is_new_line(mem);
-	if (offset < 0)
+	if (eof)
+		offset = ft_strlen(*mem);
+	else
+		offset = is_new_line(mem);
+	if ((eof && offset <= 0) || (!eof && offset < 0))
 		return (END);
 	*line = (char *)malloc(offset + 1);
 	if (!line || !ft_strlcpy(*line, str, offset + 1))
@@ -62,7 +63,6 @@ int	get_line(char **mem, char **line)
 		free(*line);
 		return (ERROR);
 	}
-	(*line)[offset] = '\n';
 	tmp = *mem;
 	*mem = ft_strdup(*mem + offset + 1);
 	free(tmp);
@@ -86,9 +86,9 @@ int	get_next_line(int fd, char **line)
 		if (!save_buf(&mem[fd], buf))
 			return (ERROR);
 		if (is_new_line(&mem[fd]) != -1)
-			return (get_line(&mem[fd], line));
+			return (get_line(&mem[fd], line, FALSE));
 	}
-	return (get_line(&mem[fd], line));
+	return (get_line(&mem[fd], line, TRUE));
 }
 
 #include <stdio.h>
@@ -100,17 +100,13 @@ int main()
 	int ret;
 	char *line;
 
-	fd = open("test_file1", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 	if (fd < 0)
 		return (1);
-	ret = get_next_line(fd, &line);
-	if (ret < 0)
+	while (get_next_line(fd, &line))
 	{
-		close(fd);
-		return (1);
+		printf("%s\n",line);
 	}
-	printf("Result: %d\n", ret);
-	printf("Sentence: %s\n", line);
 	free(line);
 	close(fd);
 	return (0);
