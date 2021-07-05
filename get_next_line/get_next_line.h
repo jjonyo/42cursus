@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:47:35 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/05 13:14:45 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/06 01:07:35 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t d_size);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
+int		ft_strchr(const char *str, int c);
 #endif

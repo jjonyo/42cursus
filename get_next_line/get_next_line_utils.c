@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 13:45:53 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/05 13:29:18 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/06 01:05:31 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t d_size)
 	i = 0;
 	len = 0;
 	if (!src)
-		return (0);
+		return (-1);
 	while (src[len])
 		len++;
 	if (d_size)
@@ -76,4 +76,20 @@ size_t	ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+int		ft_strchr(const char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == (unsigned char)c)
+			return (i);
+		i++;
+	}
+	if (str[i] == (unsigned char)c)
+		return (i);
+	return (-1);
 }
