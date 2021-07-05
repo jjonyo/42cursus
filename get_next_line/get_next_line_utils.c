@@ -6,13 +6,13 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 13:45:53 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/06 01:05:31 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/06 01:18:22 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t d_size)
+int		ft_strlcpy(char *dest, const char *src, size_t d_size)
 {
 	size_t	i;
 	size_t	len;

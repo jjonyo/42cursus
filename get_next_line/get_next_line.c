@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:46:09 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/06 01:11:30 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/06 01:51:57 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ char	*save_buf(char **mem, char *buf)
 	return (*mem);
 }
 
-int	gnl_exit(char **buf)
+int	gnl_exit(char **buf, int flag)
 {
 	free(*buf);
 	*buf = NULL;
-	return (ERROR);
+	return (flag);
 }
 
 //마지막 줄이면 그 마지막 offset까지하여 line에 넘기고 END로 리턴
@@ -46,18 +46,23 @@ int	get_line(char **mem, char **line, char **buf)
 	if (!line || ft_strlcpy(*line, *mem, offset + 1) == -1)
 	{
 		free(*line);
-		return (gnl_exit(buf));
+		return (gnl_exit(buf, ERROR));
 	}
 	tmp = *mem;
 	*mem = ft_strdup(*mem + offset + 1);
 	free(tmp);
-	return (SUCCESS);
+	return (gnl_exit(buf, SUCCESS));
 }
 
 int	get_eof_line(char **mem, char **line, char **buf)
 {
 	int	offset;
 
+	if (!*mem)
+	{
+		*line = ft_strdup("");
+		return (gnl_exit(buf, END));
+	}
 	if (ft_strchr(*mem, '\n') != -1)
 		return (get_line(mem, line, buf));
 	offset = 0;
@@ -67,10 +72,11 @@ int	get_eof_line(char **mem, char **line, char **buf)
 	if (!line || ft_strlcpy(*line, *mem, offset + 1) == -1)
 	{
 		free(*line);
-		return (gnl_exit(buf));
+		free(*mem);
+		return (gnl_exit(buf, ERROR));
 	}
 	free(*mem);
-	return (END);
+	return (gnl_exit(buf, END));
 }
 
 int	get_next_line(int fd, char **line)
@@ -81,7 +87,7 @@ int	get_next_line(int fd, char **line)
 
 	buf = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buf || fd < 0 || !line || OPEN_MAX < fd || BUFFER_SIZE < 1)
-		return (gnl_exit(&buf));
+		return (gnl_exit(&buf, ERROR));
 	while (1)
 	{
 		offset = read(fd, buf, BUFFER_SIZE);
@@ -89,7 +95,7 @@ int	get_next_line(int fd, char **line)
 			break ;
 		buf[offset] = '\0';
 		if (!save_buf(&mem[fd], buf))
-			return (gnl_exit(&buf));
+			return (gnl_exit(&buf, ERROR));
 		if (ft_strchr(mem[fd], '\n') != -1)
 			return (get_line(&mem[fd], line, &buf));
 		//개행이 있는지 확인함.
@@ -101,24 +107,3 @@ int	get_next_line(int fd, char **line)
 	//남은 mem중에 개행이 없고, 마지막이라면 마지막 까지 line에 담고 END 리턴
 	return (get_eof_line(&mem[fd], line, &buf));
 }
-
-// #include <stdio.h>
-// #include <fcntl.h>
-
-// int main()
-// {
-// 	int fd;
-// 	int ret;
-// 	char *line;
-
-// 	fd = open("empty.txt", O_RDONLY);
-// 	if (fd < 0)
-// 		return (1);
-// 	while (get_next_line(fd, &line))
-// 	{
-// 		printf("%s\n",line);
-// 	}
-// 	free(line);
-// 	close(fd);
-// 	return (0);
-// }
