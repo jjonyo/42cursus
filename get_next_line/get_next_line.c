@@ -21,7 +21,6 @@ char	*save_buf(char **mem, char *buf)
 		tmp = *mem;
 		*mem = ft_strjoin(*mem, buf);
 		free(tmp);
-		tmp = NULL;
 	}
 	else
 		*mem = ft_strdup(buf);
@@ -44,21 +43,37 @@ int	is_new_line(char **mem)
 	return (-1);
 }
 
-int	get_line(char **mem, char **line, int eof)
+int	is_end_line(char **mem)
 {
+	int		i;
 	char	*str;
-	char	*tmp;
-	int		offset;
 
 	str = *mem;
-	if (eof)
-		offset = ft_strlen(*mem);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (-1);
+		i++;
+	}
+	return (i);
+}
+//마지막 줄이면 그 마지막 offset까지하여 line에 넘기고 END로 리턴
+//마지막 줄이 아니면 개행까지의 offset계산하여 line에 넘기고 SUCCESS로 리턴
+int	get_line(char **mem, char **line, int eof)
+{
+	char	*tmp;
+	int		offset;
+	int		ret;
+
+	offset = is_end_line(mem);
+	ret = SUCCESS;
+	if (offset != -1) //마지막 줄이면
+		ret = END;
 	else
 		offset = is_new_line(mem);
-	if ((eof && offset <= 0) || (!eof && offset < 0))
-		return (END);
 	*line = (char *)malloc(offset + 1);
-	if (!line || !ft_strlcpy(*line, str, offset + 1))
+	if (!line || !ft_strlcpy(*line, *mem, offset + 1))
 	{
 		free(*line);
 		return (ERROR);
@@ -66,7 +81,7 @@ int	get_line(char **mem, char **line, int eof)
 	tmp = *mem;
 	*mem = ft_strdup(*mem + offset + 1);
 	free(tmp);
-	return (SUCCESS);
+	return (ret);
 }
 
 int	get_next_line(int fd, char **line)
