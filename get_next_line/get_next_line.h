@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:47:35 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/05 12:35:58 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/05 13:14:45 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define FALSE 0
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 65
 #endif
 
 #ifndef OPEN_MAX
