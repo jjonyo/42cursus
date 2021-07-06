@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int		ft_strlcpy(char *dest, const char *src, size_t d_size)
+int	ft_strlcpy(char *dest, const char *src, size_t d_size)
 {
 	size_t	i;
 	size_t	len;
@@ -78,7 +78,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int		ft_strchr(const char *str, int c)
+int	ft_strchr(const char *str, int c)
 {
 	int	i;
 

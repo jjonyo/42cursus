@@ -21,16 +21,16 @@
 # define TRUE 1
 # define FALSE 0
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 65
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
 
-#ifndef OPEN_MAX
-# define OPEN_MAX 1024
-#endif
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
+# endif
 
+int		ft_strlcpy(char *dest, const char *src, size_t d_size);
 int		get_next_line(int fd, char **line);
-size_t	ft_strlcpy(char *dest, const char *src, size_t d_size);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);

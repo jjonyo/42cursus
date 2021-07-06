@@ -46,6 +46,7 @@ int	get_line(char **mem, char **line, char **buf)
 	if (!line || ft_strlcpy(*line, *mem, offset + 1) == -1)
 	{
 		free(*line);
+		*line = NULL;
 		return (gnl_exit(buf, ERROR));
 	}
 	tmp = *mem;
@@ -73,9 +74,12 @@ int	get_eof_line(char **mem, char **line, char **buf)
 	{
 		free(*line);
 		free(*mem);
+		*line = NULL;
+		*mem = NULL;
 		return (gnl_exit(buf, ERROR));
 	}
 	free(*mem);
+	*mem = NULL;
 	return (gnl_exit(buf, END));
 }
 
@@ -98,12 +102,32 @@ int	get_next_line(int fd, char **line)
 			return (gnl_exit(&buf, ERROR));
 		if (ft_strchr(mem[fd], '\n') != -1)
 			return (get_line(&mem[fd], line, &buf));
-		//개행이 있는지 확인함.
-		//개행이 있으면 그 전까지 문자열을 line에 담고 SUCCESS return 해야 함.
-		//없으면 read 반복
 	}
-	//여기로 빠져나왔다는 건 이미 파일은 다 읽은 상태라는거
-	//따라서 만약 남은 mem중에 개행이 있으면 그 전까지 짤라 line에 담고 SUCCESS 리턴
-	//남은 mem중에 개행이 없고, 마지막이라면 마지막 까지 line에 담고 END 리턴
+	if (offset < 0)
+		return (gnl_exit(&buf, ERROR));
 	return (get_eof_line(&mem[fd], line, &buf));
 }
+
+// #include <fcntl.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// int main(void)
+// {
+// 	int fd;
+// 	int ret;
+// 	char *line;
+
+// 	fd = open("empty_lines", O_RDONLY);
+// 	if (fd < 0)
+// 		return (1);
+// 	while (get_next_line(180, &line))
+// 	{
+// 		printf("%s\n",line);
+// 		free(line);
+// 	}
+// 	printf("%s\n",line);
+// 	free(line);
+// 	close(fd);
+// 	return (0);
+// }
