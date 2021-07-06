@@ -6,11 +6,11 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:46:09 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/07 00:34:40 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/07 00:35:40 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*save_buf(char **mem, char *buf)
 {

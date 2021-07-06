@@ -6,11 +6,11 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 13:45:53 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/07 00:34:26 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/07 00:35:46 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_strlcpy(char *dest, const char *src, size_t d_size)
 {
