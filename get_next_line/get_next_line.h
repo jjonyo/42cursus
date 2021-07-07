@@ -30,7 +30,7 @@
 # endif
 
 int		ft_strlcpy(char *dest, const char *src, size_t d_size);
-int		get_next_line(int fd, char **line);
+char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
