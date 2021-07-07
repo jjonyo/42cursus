@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:46:09 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/07 00:34:16 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/08 02:59:23 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ char	*get_line(char **mem, char **line, char **buf)
 	char	*tmp;
 	int		offset;
 
-	offset = ft_strchr(*mem, '\n');
+	offset = ft_strchr(*mem, '\n') + 1;
 	*line = (char *)malloc(offset + 1);
-	if (!line || ft_strlcpy(*line, *mem, offset + 1) == -1)
+	if (!*line || ft_strlcpy(*line, *mem, offset + 1) == -1)
 		return (gnl_exit(buf, line, ERROR));
 	tmp = *mem;
-	*mem = ft_strdup(*mem + offset + 1);
+	*mem = ft_strdup(*mem + offset);
 	free(tmp);
 	return (gnl_exit(buf, line, SUCCESS));
 }
@@ -62,16 +62,16 @@ char	*get_eof_line(char **mem, char **line, char **buf)
 		return (gnl_exit(buf, line, END));
 	if (ft_strchr(*mem, '\n') != -1)
 		return (get_line(mem, line, buf));
-	offset = 0;
-	while ((*mem)[offset])
-		offset++;
+	offset = ft_strchr(*mem, '\0') + 1;
 	*line = (char *)malloc(offset + 1);
-	if (!line || ft_strlcpy(*line, *mem, offset + 1) == -1)
+	if (!*line || ft_strlcpy(*line, *mem, offset + 1) == -1)
 	{
 		free(*mem);
 		*mem = NULL;
 		return (gnl_exit(buf, line, ERROR));
 	}
+	(*line)[offset - 1] = '\n';
+	(*line)[offset] = '\0';
 	free(*mem);
 	*mem = NULL;
 	return (gnl_exit(buf, line, SUCCESS));
@@ -113,12 +113,12 @@ int main(void)
 	int fd;
 	char *line;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("alternate_line_nl_no_nl", O_RDONLY);
 	if (fd < 0)
 		return (1);
 	while ((line = get_next_line(fd)))
 	{
-		printf("|%s\n",line);
+		printf("|%s",line);
 		free(line);
 	}
 	free(line);
