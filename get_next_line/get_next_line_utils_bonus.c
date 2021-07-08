@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 13:45:53 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/07 00:35:46 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/08 11:15:19 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	ft_strlcpy(char *dest, const char *src, size_t d_size)
 	len = 0;
 	if (!src)
 		return (-1);
-	while (src[len])
-		len++;
+	len = ft_strlen(src);
 	if (d_size)
 	{
 		while (i + 1 < d_size && src[i])
@@ -59,9 +58,9 @@ char	*ft_strdup(const char *s)
 	size_t	len;
 	char	*ret;
 
-	len = ft_strlen(s);
 	if (!s)
 		return (NULL);
+	len = ft_strlen(s);
 	ret = (char *)malloc(len + 1);
 	if (!ret)
 		return (NULL);
