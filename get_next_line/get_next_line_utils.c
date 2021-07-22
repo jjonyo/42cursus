@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 13:45:53 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/22 23:03:32 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/23 01:58:06 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_strlcpy(char *dest, const char *src, size_t d_size)
 {
 	size_t	i;
-	int	ret;
+	int		ret;
 
 	i = 0;
 	ret = 0;
@@ -42,7 +42,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	len1 = ft_strlen(s1); 
+	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	ret = (char *)malloc(len1 + len2 + 1);
 	if (!ret)

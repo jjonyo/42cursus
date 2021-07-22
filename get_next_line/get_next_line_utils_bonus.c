@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 13:45:53 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/08 11:15:19 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/23 01:58:38 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 int	ft_strlcpy(char *dest, const char *src, size_t d_size)
 {
 	size_t	i;
-	size_t	len;
+	int		ret;
 
 	i = 0;
-	len = 0;
+	ret = 0;
 	if (!src)
 		return (-1);
-	len = ft_strlen(src);
 	if (d_size)
 	{
 		while (i + 1 < d_size && src[i])
@@ -30,26 +29,26 @@ int	ft_strlcpy(char *dest, const char *src, size_t d_size)
 			i++;
 		}
 		dest[i] = '\0';
+		ret = 1;
 	}
-	return (len);
+	return (ret);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	size_t	len1;
+	size_t	len2;
 	char	*ret;
 
 	if (!s1 || !s2)
 		return (NULL);
-	ret = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	ret = (char *)malloc(len1 + len2 + 1);
 	if (!ret)
 		return (NULL);
-	i = 0;
-	while (*s1)
-		ret[i++] = *s1++;
-	while (*s2)
-		ret[i++] = *s2++;
-	ret[i] = '\0';
+	ft_strlcpy(ret, s1, len1 + 1);
+	ft_strlcpy(ret + len1, s2, len2 + 1);
 	return (ret);
 }
 
