@@ -6,7 +6,7 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:47:35 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/23 01:58:54 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/25 23:06:28 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # define ERROR -1
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 4096
 # endif
 
 # ifndef OPEN_MAX
-#  define OPEN_MAX 1024
+#  define OPEN_MAX 4096
 # endif
 
 int		ft_strlcpy(char *dest, const char *src, size_t d_size);

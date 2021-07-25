@@ -6,13 +6,13 @@
 /*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 10:46:09 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/23 01:57:46 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/07/25 23:07:28 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*save_buf(char **mem, char *buf)
+char	*save_buffer(char **mem, char *buf)
 {
 	char	*tmp;
 
@@ -33,9 +33,12 @@ char	*gnl_exit(char **mem, char **buf, char **line, int flag)
 	*buf = NULL;
 	if (flag == ERROR || flag == END)
 	{
-		free(*mem);
+		if (flag == END)
+		{
+			free(*mem);
+			*mem = NULL;
+		}
 		free(*line);
-		*mem = NULL;
 		*line = NULL;
 	}
 	return (*line);
@@ -91,7 +94,7 @@ char	*get_next_line(int fd)
 		if (offset <= 0)
 			break ;
 		buf[offset] = '\0';
-		if (!save_buf(&mem[fd], buf))
+		if (!save_buffer(&mem[fd], buf))
 			return (gnl_exit(&mem[fd], &buf, &line, ERROR));
 		if (ft_strchr(mem[fd], '\n') != -1)
 			return (get_new_line(&mem[fd], &line, &buf));
