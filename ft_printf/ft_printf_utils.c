@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 18:51:02 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/12/20 22:06:44 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/12/20 23:28:33 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int ft_puthex(unsigned int n, int is_upper)
     else
         hex = "0123456789abcdef";
     if (n > 15)
-        len = ft_ptr_to_hex(n / 16);
+        len = ft_puthex(n / 16, is_upper);
     len += ft_putchar(hex[n % 16]);
     return (len);
 }
