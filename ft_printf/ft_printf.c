@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:06:58 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/12/21 00:00:24 by jonghpar         ###   ########.fr       */
+/*   Updated: 2021/12/21 20:31:15 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int	ft_putchar(int c)
 int	ft_putstr(char *str)
 {
 	int	i;
-	int	len;
 
 	i = -1;
-	len = 0;
 	if (str == NULL)
 		return (write(1, "(null)", 6));
 	while (str[++i])
