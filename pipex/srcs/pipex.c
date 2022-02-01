@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:54:07 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/02/01 18:38:59 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/02/01 18:43:09 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ void	child_process(int *fd, char **argv, char **envp)
 	execute(argv[2], envp);
 }
 
-
 void	parent_process(int *fd, char **argv, char **envp)
 {
 	int	outfile;
 
-	outfile = open(argv[4],  O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC, 0777);
+	outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC, 0777);
 	if (outfile == -1)
 		error();
 	dup2(fd[0], STDIN_FILENO);
