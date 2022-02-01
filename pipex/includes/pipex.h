@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:05:24 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/02/01 16:07:18 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/02/01 18:45:34 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 # include "../libft/libft.h"
 
-void    error(void);
-char    *find_path(char *command, char **envp);
-void    execute(char *argv, char **envp);
+void	error(void);
+char	*find_path(char *command, char **envp);
+void	execute(char *argv, char **envp);
 
 #endif
