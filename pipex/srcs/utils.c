@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 16:05:45 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/02/26 17:36:14 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/02/26 17:44:28 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error(void)
 {
-	perror("\033[31mError: ");
+	perror("Error: ");
 	exit(1);
 }
 
