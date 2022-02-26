@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 16:05:45 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/02/01 18:44:32 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/02/26 17:36:14 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*find_path(char *command, char **envp)
 	int		i;
 
 	i = 0;
+	if (access(command, F_OK) == 0)
+		return (command);
 	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++;
 	paths = ft_split(envp[i] + 5, ':');
@@ -50,7 +52,10 @@ void	execute(char *argv, char **envp)
 	command = ft_split(argv, ' ');
 	path = find_path(command[0], envp);
 	if (!path)
-		error();
+	{
+		ft_putstr_fd("Error: command not found", 2);
+		exit(0);
+	}
 	if (execve(path, command, envp) == -1)
 		error();
 }
