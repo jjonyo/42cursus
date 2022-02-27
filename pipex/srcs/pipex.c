@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:54:07 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/02/26 17:43:30 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/02/27 20:54:34 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc != 5)
 	{
-		ft_putstr_fd("Error: Invalid Arguments", 1);
+		ft_putstr_fd("Error: Invalid Arguments", 2);
 		return (0);
 	}
 	if (pipe(fd) == -1)
