@@ -6,12 +6,12 @@
 #    By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/21 21:34:57 by jonghpar          #+#    #+#              #
-#    Updated: 2022/03/21 21:54:39 by jonghpar         ###   ########.fr        #
+#    Updated: 2022/03/23 03:01:50 by jonghpar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= push_swap
-SRCS 	= push_swap.c
+SRCS 	= main.c init.c operations_pr.c operations_rr.c operations_s.c parse.c push_swap.c sort_utils.c sort.c stack.c utils.c
 SRCS_F 	= srcs/
 OBJS 	= ${SRCS:.c=.o}
 
