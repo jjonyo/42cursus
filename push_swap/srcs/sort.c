@@ -6,17 +6,17 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:41:57 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 12:49:33 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:19:54 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void    sort(int *arr, int cnt)
+void	sort(int *arr, int cnt)
 {
-	int i;
-	int j;
-	int temp;
+	int	i;
+	int	j;
+	int	temp;
 
 	i = 0;
 	while (i < cnt)
@@ -36,20 +36,17 @@ void    sort(int *arr, int cnt)
 	}
 }
 
-void    undo_reverse(t_stack *a, t_stack *b, t_count *cnt, int check)
+void	undo_reverse(t_stack *a, t_stack *b, t_count *cnt, int check)
 {
-	int i;
+	int	i;
 
-    i = 0;
-    if (check == 0)
-    {
-        while (i < cnt->rb)
-	    {
-		    rrb(b);
-		    ++i;
-	    }
-        return;
-    }
+	i = 0;
+	if (check == 0)
+	{
+		while (i++ < cnt->rb)
+			rrb(b);
+		return ;
+	}
 	while (i < cnt->ra && i < cnt->rb)
 	{
 		rrr(a, b);
@@ -67,15 +64,12 @@ void    undo_reverse(t_stack *a, t_stack *b, t_count *cnt, int check)
 	}
 }
 
-void    exit_case(t_stack *a, t_stack *b, int cnt, int flag)
+void	exit_case(t_stack *a, t_stack *b, int cnt, int flag)
 {
-	if (flag == 1)
+	if (flag == 1 && cnt == 2)
 	{
-        if (cnt == 2)
-        {
-		    if (a->head->value > a->head->next->value)
+		if (a->head->value > a->head->next->value)
 			sa(a);
-        }
 	}
 	if (flag == 0)
 	{
@@ -98,12 +92,12 @@ void    exit_case(t_stack *a, t_stack *b, int cnt, int flag)
 	}
 }
 
-void    sort_b_to_a(t_stack *a, t_stack *b, int cnt, int *check)
+void	sort_b_to_a(t_stack *a, t_stack *b, int cnt, int *check)
 {
-	t_count count;
-    t_pivot pivot;
+	t_count	count;
+	t_pivot	pivot;
 
-    *check = 1;
+	*check = 1;
 	if (cnt <= 2)
 		return (exit_case(a, b, cnt, 0));
 	init_count(&count);
@@ -125,15 +119,14 @@ void    sort_b_to_a(t_stack *a, t_stack *b, int cnt, int *check)
 	sort_b_to_a(a, b, count.rb, check);
 }
 
-void    sort_a_to_b(t_stack *a, t_stack *b, int cnt, int *check)
+void	sort_a_to_b(t_stack *a, t_stack *b, int cnt, int *check)
 {
-	t_count count;
-    t_pivot pivot;
+	t_count	count;
+	t_pivot	pivot;
 
-	if (cnt <= 2)
-		return (exit_case(a, b, cnt, 1));
+	exit_case(a, b, cnt, 1);
 	if (is_sorted(a, cnt) == 1)
-		return;
+		return ;
 	init_count(&count);
 	find_pivot(a, cnt, &pivot);
 	while (cnt && !check_stack(a, cnt, pivot.second))

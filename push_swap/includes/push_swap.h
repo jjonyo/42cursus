@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 21:29:03 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 12:48:47 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:35:03 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include "../libft/libft.h"
 
 typedef struct s_node

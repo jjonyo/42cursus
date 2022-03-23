@@ -6,15 +6,15 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:37:36 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 02:57:01 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:31:47 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void    push_to_tail(t_stack *stack, int value)
+void	push_to_tail(t_stack *stack, int value)
 {
-    t_node *node;
+	t_node	*node;
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
@@ -30,9 +30,9 @@ void    push_to_tail(t_stack *stack, int value)
 	++(stack->size);
 }
 
-void    push_to_head(t_stack *stack, int value)
+void	push_to_head(t_stack *stack, int value)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
@@ -48,10 +48,10 @@ void    push_to_head(t_stack *stack, int value)
 	++(stack->size);
 }
 
-int     pop_from_head(t_stack *stack)
+int	pop_from_head(t_stack *stack)
 {
-	int     value;
-	t_node  *node;
+	int		value;
+	t_node	*node;
 
 	if (stack->size == 0)
 		error();
@@ -67,10 +67,10 @@ int     pop_from_head(t_stack *stack)
 	return (value);
 }
 
-int     pop_from_tail(t_stack *stack)
+int	pop_from_tail(t_stack *stack)
 {
-	int     value;
-	t_node  *node;
+	int		value;
+	t_node	*node;
 
 	if (stack->size == 0)
 		error();

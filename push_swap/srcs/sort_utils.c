@@ -6,16 +6,16 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:42:39 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 11:24:55 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:07:39 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int     find_pos(t_stack *stack)
+int	find_pos(t_stack *stack)
 {
-	int     pos;
-	t_node  *temp;
+	int		pos;
+	t_node	*temp;
 
 	pos = 0;
 	temp = stack->head;
@@ -28,13 +28,13 @@ int     find_pos(t_stack *stack)
 	return (pos);
 }
 
-void    change_pos(t_stack *stack)
+void	change_pos(t_stack *stack)
 {
-	int pos;
+	int	pos;
 
 	pos = find_pos(stack);
 	if (!pos)
-		return;
+		return ;
 	else if (pos == 1)
 		sa(stack);
 	else if (pos == 2)
@@ -57,10 +57,10 @@ void    change_pos(t_stack *stack)
 		ra(stack);
 }
 
-int     check_stack(t_stack *stack, int cnt, int pv)
+int	check_stack(t_stack *stack, int cnt, int pv)
 {
-	int i;
-	t_node *cur;
+	int		i;
+	t_node	*cur;
 
 	cur = stack->head;
 	i = 0;
@@ -74,11 +74,11 @@ int     check_stack(t_stack *stack, int cnt, int pv)
 	return (1);
 }
 
-void    find_pivot(t_stack *stack, int cnt, t_pivot *pivot)
+void	find_pivot(t_stack *stack, int cnt, t_pivot *pivot)
 {
-	t_node *cur;
-	int *arr;
-	int i;
+	t_node	*cur;
+	int		*arr;
+	int		i;
 
 	i = 0;
 	cur = stack->head;
