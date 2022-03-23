@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
+/*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:46:21 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 14:45:23 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:57:22 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	is_sorted(t_stack *stack, int count)
 void	parse(int argc, char **argv, t_stack *a)
 {
 	int		i;
-	int		sorted;
 	long	num;
 	char	*arg;
 
@@ -102,7 +101,4 @@ void	parse(int argc, char **argv, t_stack *a)
 		}
 	}
 	check_duplicate(a);
-	sorted = is_sorted(a, a->size);
-	if (sorted)
-		exit(1);
 }
