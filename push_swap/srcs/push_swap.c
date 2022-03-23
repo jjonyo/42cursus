@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 21:36:43 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 03:00:11 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 10:57:19 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 void    sort_arg_three(t_stack *stack)
 {
-	int bot;
-	int mid;
-	int top;
+	int first;
+	int second;
+	int third;
 
-	bot = stack->head->value;
-	mid = stack->head->next->value;
-	top = stack->head->next->next->value;
-	if (bot < mid && mid < top)
+	first = stack->head->value;
+	second = stack->head->next->value;
+	third = stack->head->next->next->value;
+	if (first < second && second < third)
 		return;
-	if (bot > mid && mid < top && bot < top)
+	if (first > second && second < third && first < third)
 		sa(stack);
-	else if (bot < mid && mid > top && bot < top)
+	else if (first < second && second > third && first < third)
 	{
 		rra(stack);
 		sa(stack);
 	}
-	else if (bot > mid && bot > top && mid < top)
+	else if (first > second && first > third && second < third)
 		ra(stack);
-	else if (bot > mid && mid > top)
+	else if (first > second && second > third)
 	{
 		ra(stack);
 		sa(stack);
 	}
-	else if (bot < mid && bot > top && mid > top)
+	else if (first < second && first > third && second > third)
 		rra(stack);
 }
 
@@ -45,8 +45,11 @@ void    sort_arg_under_three(t_stack *stack, int size)
 {
 	if (size <= 1)
 		return;
-	else if (size == 2 && stack->head->value > stack->head->next->value)
-		sa(stack);
+	else if (size == 2)
+    {
+        if (stack->head->value > stack->head->next->value)
+		    sa(stack);
+    }
 	else if (size == 3)
 		sort_arg_three(stack);
 	else
@@ -66,10 +69,13 @@ void    sort_arg_five(t_stack *a, t_stack* b)
 
 void    push_swap(t_stack *a, t_stack *b)
 {
-	if (a->size < 4)
+    int check;
+
+    check = 0;
+	if (a->size <= 3)
 		sort_arg_under_three(a, a->size);
 	else if (a->size == 5)
 		sort_arg_five(a, b);
 	else
-		sort_a_to_b(a, b, a->size);
+		sort_a_to_b(a, b, a->size, &check);
 }

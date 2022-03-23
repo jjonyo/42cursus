@@ -6,13 +6,13 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:41:57 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 02:57:57 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 11:24:55 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void    bubble_sort(int *arr, int cnt)
+void    sort(int *arr, int cnt)
 {
 	int i;
 	int j;
@@ -36,11 +36,20 @@ void    bubble_sort(int *arr, int cnt)
 	}
 }
 
-void    rreverse(t_stack *a, t_stack *b, int ra_cnt, int rb_cnt)
+void    undo_reverse(t_stack *a, t_stack *b, int ra_cnt, int rb_cnt, int check)
 {
 	int i;
 
-	i = 0;
+    i = 0;
+    if (check == 0)
+    {
+        while (i < rb_cnt)
+	    {
+		    rrb(b);
+		    ++i;
+	    }
+        return;
+    }
 	while (i < ra_cnt && i < rb_cnt)
 	{
 		rrr(a, b);
@@ -58,12 +67,15 @@ void    rreverse(t_stack *a, t_stack *b, int ra_cnt, int rb_cnt)
 	}
 }
 
-void    sort_lowcase(t_stack *a, t_stack *b, int cnt, int flag)
+void    exit_case(t_stack *a, t_stack *b, int cnt, int flag)
 {
-	if (flag == 1 && cnt == 2)
+	if (flag == 1)
 	{
-		if (a->head->value > a->head->next->value)
+        if (cnt == 2)
+        {
+		    if (a->head->value > a->head->next->value)
 			sa(a);
+        }
 	}
 	if (flag == 0)
 	{
@@ -86,15 +98,16 @@ void    sort_lowcase(t_stack *a, t_stack *b, int cnt, int flag)
 	}
 }
 
-void    sort_b_to_a(t_stack *a, t_stack *b, int cnt)
+void    sort_b_to_a(t_stack *a, t_stack *b, int cnt, int *check)
 {
 	t_count count;
     t_pivot pivot;
 
+    *check = 1;
 	if (cnt <= 2)
-		return (sort_lowcase(a, b, cnt, 0));
+		return (exit_case(a, b, cnt, 0));
 	init_count(&count);
-	find_pv(b, cnt, &pivot);
+	find_pivot(b, cnt, &pivot);
 	while (cnt--)
 	{
 		if (b->head->value < pivot.first)
@@ -106,24 +119,24 @@ void    sort_b_to_a(t_stack *a, t_stack *b, int cnt)
 				count.ra += ra(a);
 		}
 	}
-	sort_a_to_b(a, b, count.pa - count.ra);
-	rreverse(a, b, count.ra, count.rb);
-	sort_a_to_b(a, b, count.ra);
-	sort_b_to_a(a, b, count.rb);
+	sort_a_to_b(a, b, count.pa - count.ra, check);
+	undo_reverse(a, b, count.ra, count.rb, *check);
+	sort_a_to_b(a, b, count.ra, check);
+	sort_b_to_a(a, b, count.rb, check);
 }
 
-void    sort_a_to_b(t_stack *a, t_stack *b, int cnt)
+void    sort_a_to_b(t_stack *a, t_stack *b, int cnt, int *check)
 {
 	t_count count;
     t_pivot pivot;
 
 	if (cnt <= 2)
-		return (sort_lowcase(a, b, cnt, 1));
+		return (exit_case(a, b, cnt, 1));
 	if (is_sorted(a, cnt) == 1)
 		return;
 	init_count(&count);
-	find_pv(a, cnt, &pivot);
-	while (cnt && !remain_all_big(a, cnt, pivot.second))
+	find_pivot(a, cnt, &pivot);
+	while (cnt && !check_stack(a, cnt, pivot.second))
 	{
 		if (a->head->value >= pivot.second)
 			count.ra += ra(a);
@@ -135,9 +148,9 @@ void    sort_a_to_b(t_stack *a, t_stack *b, int cnt)
 		}
 		cnt--;
 	}
-	rreverse(a, b, count.ra, count.rb);
+	undo_reverse(a, b, count.ra, count.rb, *check);
 	count.ra += cnt;
-	sort_a_to_b(a, b, count.ra);
-	sort_b_to_a(a, b, count.rb);
-	sort_b_to_a(a, b, count.pb - count.rb);
+	sort_a_to_b(a, b, count.ra, check);
+	sort_b_to_a(a, b, count.rb, check);
+	sort_b_to_a(a, b, count.pb - count.rb, check);
 }

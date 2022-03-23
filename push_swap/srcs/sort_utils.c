@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:42:39 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 02:58:09 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 11:24:55 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,41 +57,40 @@ void    change_pos(t_stack *stack)
 		ra(stack);
 }
 
-int     remain_all_big(t_stack *stack, int cnt, int pv)
+int     check_stack(t_stack *stack, int cnt, int pv)
 {
 	int i;
-	t_node *temp;
+	t_node *cur;
 
-	temp = stack->head;
+	cur = stack->head;
 	i = 0;
 	while (i < cnt)
 	{
-		if (temp->value < pv)
+		if (cur->value < pv)
 			return (0);
-		temp = temp->next;
+		cur = cur->next;
 		++i;
 	}
 	return (1);
 }
 
-void    find_pv(t_stack *stack, int cnt, t_pivot *pivot)
+void    find_pivot(t_stack *stack, int cnt, t_pivot *pivot)
 {
-	t_node *temp;
+	t_node *cur;
 	int *arr;
 	int i;
 
 	i = 0;
-	temp = stack->head;
+	cur = stack->head;
 	arr = (int *)malloc(sizeof(int) * cnt);
 	if (!arr)
 		error();
-	while (i < cnt && temp)
+	while (i < cnt && cur != NULL)
 	{
-		arr[i] = temp->value;
-		temp = temp->next;
-		++i;
+		arr[i++] = cur->value;
+		cur = cur->next;
 	}
-	bubble_sort(arr, cnt);
+	sort(arr, cnt);
 	pivot->first = arr[i / 3];
 	pivot->second = arr[i * 2 / 3];
 	free(arr);

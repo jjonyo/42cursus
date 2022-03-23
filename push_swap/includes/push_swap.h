@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 21:29:03 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 02:57:40 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 11:24:55 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ void    push_swap(t_stack *a, t_stack *b);
 
 int     find_pos(t_stack *stack);
 void    change_pos(t_stack *stack);
-int     remain_all_big(t_stack *stack, int cnt, int pv);
-void    find_pv(t_stack *stack, int cnt, t_pivot *pivot);
+int     check_stack(t_stack *stack, int cnt, int pv);
+void    find_pivot(t_stack *stack, int cnt, t_pivot *pivot);
 
-void    bubble_sort(int *arr, int cnt);
-void    rreverse(t_stack *a, t_stack *b, int ra_cnt, int rb_cnt);
-void    sort_lowcase(t_stack *a, t_stack *b, int cnt, int flag);
-void    sort_b_to_a(t_stack *a, t_stack *b, int cnt);
-void    sort_a_to_b(t_stack *a, t_stack *b, int cnt);
+void    sort(int *arr, int cnt);
+void    undo_reverse(t_stack *a, t_stack *b, int ra_cnt, int rb_cnt, int check);
+void    exit_case(t_stack *a, t_stack *b, int cnt, int flag);
+void    sort_b_to_a(t_stack *a, t_stack *b, int cnt, int *check);
+void    sort_a_to_b(t_stack *a, t_stack *b, int cnt, int *check);
 
 void    push_to_tail(t_stack *stack, int value);
 void    push_to_head(t_stack *stack, int value);
