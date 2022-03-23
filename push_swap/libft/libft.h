@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:17:56 by jonghpar          #+#    #+#             */
-/*   Updated: 2021/07/01 22:21:49 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 12:01:27 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *s);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+int					ft_strcmp(char *s1, char *s2);
 int					ft_strncmp(const char *s1, const char *s, size_t n);
 char				*ft_strnstr(const char *s1, const char *set, size_t n);
 char				*ft_strrchr(const char *s, int c);

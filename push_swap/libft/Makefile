@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/24 12:57:20 by jonghpar          #+#    #+#              #
-#    Updated: 2021/06/28 17:01:03 by jonghpar         ###   ########.fr        #
+#    Updated: 2022/03/23 12:00:41 by jonghpar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS					= ft_memset.c \
 						 ft_strlcat.c \
 						 ft_strchr.c \
 						 ft_strrchr.c \
+						 ft_strcmp.c \
 						 ft_strncmp.c \
 						 ft_strnstr.c \
 						 ft_atoi.c \
