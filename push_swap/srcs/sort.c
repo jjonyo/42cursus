@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:41:57 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 11:24:55 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 12:49:33 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,31 @@ void    sort(int *arr, int cnt)
 	}
 }
 
-void    undo_reverse(t_stack *a, t_stack *b, int ra_cnt, int rb_cnt, int check)
+void    undo_reverse(t_stack *a, t_stack *b, t_count *cnt, int check)
 {
 	int i;
 
     i = 0;
     if (check == 0)
     {
-        while (i < rb_cnt)
+        while (i < cnt->rb)
 	    {
 		    rrb(b);
 		    ++i;
 	    }
         return;
     }
-	while (i < ra_cnt && i < rb_cnt)
+	while (i < cnt->ra && i < cnt->rb)
 	{
 		rrr(a, b);
 		++i;
 	}
-	while (i < ra_cnt)
+	while (i < cnt->ra)
 	{
 		rra(a);
 		++i;
 	}
-	while (i < rb_cnt)
+	while (i < cnt->rb)
 	{
 		rrb(b);
 		++i;
@@ -120,7 +120,7 @@ void    sort_b_to_a(t_stack *a, t_stack *b, int cnt, int *check)
 		}
 	}
 	sort_a_to_b(a, b, count.pa - count.ra, check);
-	undo_reverse(a, b, count.ra, count.rb, *check);
+	undo_reverse(a, b, &count, *check);
 	sort_a_to_b(a, b, count.ra, check);
 	sort_b_to_a(a, b, count.rb, check);
 }
@@ -148,7 +148,7 @@ void    sort_a_to_b(t_stack *a, t_stack *b, int cnt, int *check)
 		}
 		cnt--;
 	}
-	undo_reverse(a, b, count.ra, count.rb, *check);
+	undo_reverse(a, b, &count, *check);
 	count.ra += cnt;
 	sort_a_to_b(a, b, count.ra, check);
 	sort_b_to_a(a, b, count.rb, check);
