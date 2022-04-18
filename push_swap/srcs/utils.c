@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
+/*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:47:03 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 14:33:59 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:57:22 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	error(void)
 {
 	ft_putendl_fd("Error", 2);
-	exit(0);
+	exit(1);
 }
 
 int	is_space(char c)

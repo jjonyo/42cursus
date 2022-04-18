@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
+/*   By: jonghpar <jonghpar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:40:39 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/03/23 12:53:22 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:54:36 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int argc, char **argv)
 	create_stack(&a);
 	create_stack(&b);
 	parse(argc, argv, &a);
+	if (is_sorted(&a, a.size))
+		return (0);
 	push_swap(&a, &b);
 	clear_stack(&a, &b);
 	return (0);
