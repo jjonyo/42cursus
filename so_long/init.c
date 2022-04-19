@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 02:06:43 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/04/19 02:42:19 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/04/19 11:06:49 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ void	parse_map(char *path, t_game *game)
 {
 	int		fd;
 	char	*line;
+	int		len;
 
+	len = ft_strlen(path);
+	if (ft_strncmp(path + len - 4, ".ber", 4) != 0)
+		error("map file is not *.ber");
 	fd = open(path, O_RDONLY);
 	if (fd <= 0)
 		error("file open error");

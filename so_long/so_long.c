@@ -6,7 +6,7 @@
 /*   By: jonghpar <student.42seoul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 18:52:52 by jonghpar          #+#    #+#             */
-/*   Updated: 2022/04/19 02:54:18 by jonghpar         ###   ########.fr       */
+/*   Updated: 2022/04/19 11:09:16 by jonghpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		error("check the map");
 	game = (t_game *)malloc(sizeof(t_game));
-	game->mlx = mlx_init();
-	game->img = init_img(game->mlx);
 	parse_map(argv[1], game);
 	check_map(game);
 	check_wall(game);
 	check_item(game);
+	game->mlx = mlx_init();
+	game->img = init_img(game->mlx);
 	game->win = mlx_new_window(game->mlx, game->width * IMAGE_SIZE,
 			game->height * IMAGE_SIZE, "so_long");
 	render_image(game);
